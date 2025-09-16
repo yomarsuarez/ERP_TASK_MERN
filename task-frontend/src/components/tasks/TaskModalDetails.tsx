@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import { formDate } from "../../utils/utils";
 import { statusTranslations } from "@/locales/es";
 import type { TaskStatus } from "@/types/index";
+import NotesPanel from "../notes/NotesPanel";
 
 export default function TaskModalDetails() {
   const params = useParams();
@@ -102,6 +103,22 @@ export default function TaskModalDetails() {
                     <p className="text-lg text-slate-500 mb-2">
                       Description: {data.description}
                     </p>
+                    {data.completedBy.length ? (
+                      <>
+                        <p className="text-lg text-slate-600 mb-2">Changelog</p>
+                        <ul>
+                          {data.completedBy.map((activityLog) => (
+                            <li key={activityLog._id} className="list-decimal">
+                              <span className="font-bold text-slate-600">
+                                {statusTranslations[activityLog.status]}
+                              </span>{" "}
+                              by: {activityLog.user.name}
+                            </li>
+                          ))}
+                        </ul>
+                      </>
+                    ) : null}
+
                     <div className="my-5 space-y-3">
                       <label className="font-bold">
                         <select
@@ -119,6 +136,7 @@ export default function TaskModalDetails() {
                         </select>
                       </label>
                     </div>
+                    <NotesPanel />
                   </Dialog.Panel>
                 </Transition.Child>
               </div>
