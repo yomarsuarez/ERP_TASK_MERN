@@ -22,6 +22,7 @@ export type UpdateCurrentUserPasswordForm = Pick<
   Auth,
   "current_password" | "password" | "password_confirmation"
 >;
+export type CheckPasswordForm = Pick<Auth, "password">;
 
 export type ConfirmToken = Pick<Auth, "token">;
 
@@ -76,9 +77,6 @@ export const taskSchema = z.object({
   updatedAt: z.string(),
 });
 
-export type Task = z.infer<typeof taskSchema>;
-export type TaskFormData = Pick<Task, "name" | "description">;
-
 export const taskProjectSchema = taskSchema.pick({
   _id: true,
   name: true,
@@ -86,13 +84,18 @@ export const taskProjectSchema = taskSchema.pick({
   status: true,
 });
 
+export type Task = z.infer<typeof taskSchema>;
+export type TaskFormData = Pick<Task, "name" | "description">;
+export type TaskProject = z.infer<typeof taskProjectSchema>;
+
 export const projectSchema = z.object({
   _id: z.string(),
   projectName: z.string(),
   clientName: z.string(),
   description: z.string(),
-  tasks: z.array(taskProjectSchema),
   manager: z.string(),
+  tasks: z.array(taskProjectSchema),
+  team: z.array(z.string()),
 });
 
 export const dashboardProjectSchema = z.array(
@@ -104,6 +107,12 @@ export const dashboardProjectSchema = z.array(
     manager: true,
   })
 );
+
+export const editProjectSchema = projectSchema.pick({
+  projectName: true,
+  clientName: true,
+  description: true,
+});
 
 export type Project = z.infer<typeof projectSchema>;
 export type ProjectFormData = Pick<
