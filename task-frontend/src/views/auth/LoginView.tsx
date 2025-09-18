@@ -34,27 +34,34 @@ export default function LoginView() {
 
   return (
     <>
-      <h1 className="text-5xl font-black text-white">Login</h1>
-      <p className="text-2xl font-light text-white mt-5">
-        Start planning your projects by {""}
-        <span className=" text-fuchsia-500 font-bold">
+      <h1 className="text-4xl md:text-5xl font-extrabold text-center text-white">
+        Login
+      </h1>
+      <p className="text-lg md:text-2xl font-light text-center text-gray-300 mt-4">
+        Start planning your projects by{" "}
+        <span className="text-emerald-400 font-semibold">
           logging in using this form.
         </span>
       </p>
 
       <form
         onSubmit={handleSubmit(handleLogin)}
-        className="space-y-8 p-10 mt-10 bg-white"
+        className="space-y-6 p-8 mt-8 bg-[#1e293b] rounded-xl shadow-lg"
         noValidate
       >
-        <div className="flex flex-col gap-5">
-          <label className="font-normal text-2xl">Email</label>
-
+        {/* Email */}
+        <div className="flex flex-col gap-2">
+          <label
+            htmlFor="email"
+            className="font-medium text-sm text-gray-200 tracking-wide"
+          >
+            Email
+          </label>
           <input
             id="email"
             type="email"
-            placeholder="Register Email"
-            className="w-full p-3  border-gray-300 border"
+            placeholder="Enter your email"
+            className="w-full p-3 rounded-lg bg-gray-800 border border-gray-600 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
             {...register("email", {
               required: "Email is required",
               pattern: {
@@ -66,13 +73,19 @@ export default function LoginView() {
           {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
         </div>
 
-        <div className="flex flex-col gap-5">
-          <label className="font-normal text-2xl">Password</label>
-
+        {/* Password */}
+        <div className="flex flex-col gap-2">
+          <label
+            htmlFor="password"
+            className="font-medium text-sm text-gray-200 tracking-wide"
+          >
+            Password
+          </label>
           <input
+            id="password"
             type="password"
-            placeholder="Register Password"
-            className="w-full p-3  border-gray-300 border"
+            placeholder="Enter your password"
+            className="w-full p-3 rounded-lg bg-gray-800 border border-gray-600 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
             {...register("password", {
               required: "Password is required",
             })}
@@ -82,24 +95,29 @@ export default function LoginView() {
           )}
         </div>
 
-        <input
+        {/* Submit */}
+        <button
           type="submit"
-          value="Login"
-          className="bg-fuchsia-600 hover:bg-fuchsia-700 w-full p-3  text-white font-black  text-xl cursor-pointer"
-        />
+          className="w-full p-3 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-lg transition-all duration-300 shadow-md"
+        >
+          Login
+        </button>
       </form>
-      <nav className="mt-10 flex flex-col space-y-4">
+
+      {/* Navigation */}
+      <nav className="mt-6 flex flex-col space-y-3">
         <Link
           to={"/auth/register"}
-          className="text-center text-gray-300 font-normal"
+          className="text-center text-gray-300 text-sm hover:text-emerald-400 transition-colors"
         >
-          Don't have an account? Create one?
+          Don’t have an account?{" "}
+          <span className="font-semibold">Create one</span>
         </Link>
         <Link
           to={"/auth/forgot-password"}
-          className="text-center text-gray-300 font-normal"
+          className="text-center text-gray-300 text-sm hover:text-emerald-400 transition-colors"
         >
-          Forgot your password? Reset
+          Forgot your password? <span className="font-semibold">Reset</span>
         </Link>
       </nav>
     </>

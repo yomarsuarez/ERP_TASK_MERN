@@ -5,10 +5,13 @@ import { ToastContainer } from "react-toastify";
 export default function AuthLayout() {
   return (
     <>
-      <div className="bg-gray-800 min-h-screen">
-        <div className="py-10 lg:py-20 mx-auto w-[450px]">
-          <Logo />
-          <div className="mt-10">
+      <div className="bg-[#0f172a] min-h-screen flex items-center justify-center px-4">
+        <div className="w-full max-w-md">
+          <div className="flex flex-col items-center">
+            <Logo />
+          </div>
+
+          <div className="mt-8 bg-[#1e293b] shadow-xl rounded-xl p-8">
             <Outlet />
           </div>
         </div>

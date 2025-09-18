@@ -41,10 +41,12 @@ export default function RegisterView() {
 
   return (
     <>
-      <h1 className="text-5xl font-black text-white">Create Account</h1>
-      <p className="text-2xl font-light text-white mt-5">
-        Fill out the form to {""}
-        <span className=" text-fuchsia-500 font-bold">
+      <h1 className="text-4xl md:text-5xl font-extrabold text-center text-white">
+        Create Account
+      </h1>
+      <p className="text-lg md:text-2xl font-light text-center text-gray-300 mt-4">
+        Fill out the form to
+        <span className="text-emerald-400 font-semibold">
           {" "}
           create your account
         </span>
@@ -52,18 +54,19 @@ export default function RegisterView() {
 
       <form
         onSubmit={handleSubmit(handleRegister)}
-        className="space-y-8 p-10  bg-white mt-10"
+        className="space-y-6 p-8 mt-8 bg-[#1e293b] rounded-xl shadow-lg"
         noValidate
       >
-        <div className="flex flex-col gap-5">
-          <label className="font-normal text-2xl" htmlFor="email">
+        {/* Email */}
+        <div className="flex flex-col gap-2">
+          <label htmlFor="email" className="font-medium text-sm text-gray-200">
             Email
           </label>
           <input
             id="email"
             type="email"
-            placeholder="Register Email"
-            className="w-full p-3  border-gray-300 border"
+            placeholder="Enter your email"
+            className="w-full p-3 rounded-lg bg-gray-800 border border-gray-600 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
             {...register("email", {
               required: "Email is required",
               pattern: {
@@ -75,12 +78,13 @@ export default function RegisterView() {
           {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
         </div>
 
-        <div className="flex flex-col gap-5">
-          <label className="font-normal text-2xl">Name</label>
+        {/* Name */}
+        <div className="flex flex-col gap-2">
+          <label className="font-medium text-sm text-gray-200">Name</label>
           <input
-            type="name"
-            placeholder="Register Name"
-            className="w-full p-3  border-gray-300 border"
+            type="text"
+            placeholder="Enter your name"
+            className="w-full p-3 rounded-lg bg-gray-800 border border-gray-600 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
             {...register("name", {
               required: "Name of the user is required",
             })}
@@ -88,13 +92,13 @@ export default function RegisterView() {
           {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>}
         </div>
 
-        <div className="flex flex-col gap-5">
-          <label className="font-normal text-2xl">Password</label>
-
+        {/* Password */}
+        <div className="flex flex-col gap-2">
+          <label className="font-medium text-sm text-gray-200">Password</label>
           <input
             type="password"
-            placeholder="Register password"
-            className="w-full p-3  border-gray-300 border"
+            placeholder="Enter your password"
+            className="w-full p-3 rounded-lg bg-gray-800 border border-gray-600 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
             {...register("password", {
               required: "Password is required",
               minLength: {
@@ -108,44 +112,53 @@ export default function RegisterView() {
           )}
         </div>
 
-        <div className="flex flex-col gap-5">
-          <label className="font-normal text-2xl">Repeat Password</label>
-
+        {/* Repeat Password */}
+        <div className="flex flex-col gap-2">
+          <label
+            htmlFor="password_confirmation"
+            className="font-medium text-sm text-gray-200"
+          >
+            Repeat Password
+          </label>
           <input
             id="password_confirmation"
             type="password"
-            placeholder="Repeat Registration Password"
-            className="w-full p-3  border-gray-300 border"
+            placeholder="Repeat your password"
+            className="w-full p-3 rounded-lg bg-gray-800 border border-gray-600 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
             {...register("password_confirmation", {
               required: "Repeat Password is required",
               validate: (value) =>
                 value === password || "Passwords are not the same",
             })}
           />
-
           {errors.password_confirmation && (
             <ErrorMessage>{errors.password_confirmation.message}</ErrorMessage>
           )}
         </div>
 
-        <input
+        {/* Submit */}
+        <button
           type="submit"
-          value="Register"
-          className="bg-fuchsia-600 hover:bg-fuchsia-700 w-full p-3  text-white font-black  text-xl cursor-pointer"
-        />
+          className="w-full p-3 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-lg transition-all duration-300 shadow-md"
+        >
+          Register
+        </button>
       </form>
-      <nav className="mt-10 flex flex-col space-y-4">
+
+      {/* Navigation */}
+      <nav className="mt-6 flex flex-col space-y-3">
         <Link
           to={"/auth/login"}
-          className="text-center text-gray-300 font-normal"
+          className="text-center text-gray-300 text-sm hover:text-emerald-400 transition-colors"
         >
-          Already have an account? Sign in
+          Already have an account?{" "}
+          <span className="font-semibold">Sign in</span>
         </Link>
         <Link
           to={"/auth/forgot-password"}
-          className="text-center text-gray-300 font-normal"
+          className="text-center text-gray-300 text-sm hover:text-emerald-400 transition-colors"
         >
-          Forgot your password? Reset
+          Forgot your password? <span className="font-semibold">Reset</span>
         </Link>
       </nav>
     </>

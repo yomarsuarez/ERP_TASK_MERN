@@ -75,29 +75,46 @@ export default function TaskList({ tasks, canEdit }: TaskListProps) {
 
   return (
     <>
-      <h2 className="text-5xl font-black my-10">Tasks</h2>
+      <h2 className="text-3xl font-bold text-white mb-8">Tasks</h2>
 
       <div className="flex gap-5 overflow-x-scroll 2xl:overflow-auto pb-32">
         <DndContext onDragEnd={handleDragEnd}>
           {Object.entries(groupedTasks).map(([status, tasks]) => (
             <div key={status} className="min-w-[300px] 2xl:min-w-0 2xl:w-1/5">
               <h3
-                className={`capitalize text-xl font-light border border-slate-300 bg-white p-3 border-t-8 ${statusStyles[status]}`}
+                className={`capitalize text-lg font-semibold bg-[#1e293b] border border-gray-600 text-gray-200 p-4 rounded-t-lg border-t-4 ${statusStyles[status]}`}
               >
                 {statusTranslations[status]}
               </h3>
               <DropTask status={status} />
-              <ul className="mt-5 space-y-5">
-                {tasks.length === 0 ? (
-                  <li className="text-gray-500 text-center pt-3">
-                    There are not tasks
-                  </li>
-                ) : (
-                  tasks.map((task) => (
-                    <TaskCard key={task._id} task={task} canEdit={canEdit} />
-                  ))
-                )}
-              </ul>
+              <div className="bg-gray-800/50 border-x border-b border-gray-600 rounded-b-lg min-h-[200px] p-4">
+                <ul className="space-y-3">
+                  {tasks.length === 0 ? (
+                    <li className="text-gray-400 text-center pt-8">
+                      <div className="flex flex-col items-center gap-2">
+                        <svg
+                          className="w-8 h-8 text-gray-500"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="1"
+                            d="M9 5H7a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                          />
+                        </svg>
+                        <span className="text-sm">No tasks yet</span>
+                      </div>
+                    </li>
+                  ) : (
+                    tasks.map((task) => (
+                      <TaskCard key={task._id} task={task} canEdit={canEdit} />
+                    ))
+                  )}
+                </ul>
+              </div>
             </div>
           ))}
         </DndContext>

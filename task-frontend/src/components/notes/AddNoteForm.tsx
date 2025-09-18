@@ -43,29 +43,34 @@ export default function AddNoteForm() {
   return (
     <form
       onSubmit={handleSubmit(handleAddNote)}
-      className="space-y-3"
+      className="space-y-6"
       noValidate
     >
-      <div className="flex flex-col gap-2">
-        <label className="font-bold" htmlFor="content">
-          Create note
+      <div className="space-y-2">
+        <label
+          className="font-medium text-sm text-gray-200 tracking-wide"
+          htmlFor="content"
+        >
+          Create Note
         </label>
         <input
           type="text"
           id="content"
-          placeholder="Content of the note"
-          className="w-full p-3 border-gray-300"
+          placeholder="Enter your note content..."
+          className="w-full p-3 rounded-lg bg-gray-800 border border-gray-600 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
           {...register("content", { required: "Content is required" })}
         />
         {errors.content && (
           <ErrorMessage>{errors.content.message}</ErrorMessage>
         )}
       </div>
-      <input
+
+      <button
         type="submit"
-        value="Create note"
-        className="bg-fuchsia-600 hover:bg-fuchsia-700 w-full p-2 text-white font-black cursor-pointer"
-      />
+        className="w-full bg-emerald-500 hover:bg-emerald-600 p-3 text-white font-bold rounded-lg cursor-pointer transition-all duration-300 shadow-md hover:shadow-lg"
+      >
+        Create Note
+      </button>
     </form>
   );
 }

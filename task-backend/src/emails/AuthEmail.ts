@@ -7,39 +7,72 @@ interface IEmail {
 }
 
 export class AuthEmail {
+  // Función para obtener el remitente según el ambiente
+  private static getFromEmail() {
+    if (process.env.NODE_ENV === "production") {
+      // Para Resend - usa el dominio de prueba o tu dominio verificado
+      return "TaskApp <onboarding@resend.dev>"; // o "TaskApp <noreply@tudominio.com>"
+    } else {
+      // Para Mailtrap - cualquier email funciona
+      return "Task <admin@task.com>";
+    }
+  }
+
   static sendConfirmationEmail = async (user: IEmail) => {
     const info = await transporter.sendMail({
-      from: "Task <admin@task.com>",
+      from: AuthEmail.getFromEmail(),
       to: user.email,
-      subject: "task confirm your account",
+      subject: "TaskApp - Confirm your account",
       text: "Confirm your account",
-      html: `<p>Hello ${user.name} this email allow confirm your account</p>
-      
-      <p>Visit the next link</p>
-      <a href="${process.env.FRONTEND_URL}/auth/confirm-account">Confirm your account</a>
-      <p>Enter the code here: <b>${user.token}</b></p>
-      <p>This token expires in 10 minutes</p>
-      
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #333;">Hello ${user.name}!</h2>
+          <p>Thank you for registering with TaskApp. Please confirm your account to get started.</p>
+          
+          <div style="margin: 30px 0;">
+            <a href="${process.env.FRONTEND_URL}/auth/confirm-account" 
+               style="background-color: #4CAF50; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; display: inline-block;">
+              Confirm Your Account
+            </a>
+          </div>
+          
+          <p>Or enter this confirmation code: <strong style="font-size: 18px; color: #4CAF50;">${user.token}</strong></p>
+          <p style="color: #666; font-size: 14px;">This token expires in 10 minutes</p>
+          
+          <hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;">
+          <p style="color: #999; font-size: 12px;">If you didn't create an account, you can safely ignore this email.</p>
+        </div>
       `,
     });
-    console.log("message sent", info.messageId);
+    console.log("Confirmation email sent", info.messageId);
   };
 
   static sendPasswordResetToken = async (user: IEmail) => {
     const info = await transporter.sendMail({
-      from: "Task <admin@task.com>",
+      from: AuthEmail.getFromEmail(),
       to: user.email,
-      subject: "task reset your password",
+      subject: "TaskApp - Reset your password",
       text: "Reset your password",
-      html: `<p>Hello ${user.name} you have requested to reset your password</p>
-      
-      <p>Visit the next link</p>
-      <a href="${process.env.FRONTEND_URL}/auth/new-password">Reset your Password</a>
-      <p>Enter the code here: <b>${user.token}</b></p>
-      <p>This token expires in 10 minutes</p>
-      
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #333;">Hello ${user.name}!</h2>
+          <p>You have requested to reset your password for your TaskApp account.</p>
+          
+          <div style="margin: 30px 0;">
+            <a href="${process.env.FRONTEND_URL}/auth/new-password" 
+               style="background-color: #ff6b35; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; display: inline-block;">
+              Reset Your Password
+            </a>
+          </div>
+          
+          <p>Or enter this reset code: <strong style="font-size: 18px; color: #ff6b35;">${user.token}</strong></p>
+          <p style="color: #666; font-size: 14px;">This token expires in 10 minutes</p>
+          
+          <hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;">
+          <p style="color: #999; font-size: 12px;">If you didn't request this password reset, you can safely ignore this email.</p>
+        </div>
       `,
     });
-    console.log("message sent", info.messageId);
+    console.log("Password reset email sent", info.messageId);
   };
 }

@@ -71,7 +71,7 @@ export default function AddTaskModal() {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black/60" />
+            <div className="fixed inset-0 bg-black/70" />
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
@@ -85,27 +85,36 @@ export default function AddTaskModal() {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-4xl transform overflow-hidden rounded-2xl bg-white text-left align-middle shadow-xl transition-all p-16">
-                  <Dialog.Title as="h3" className="font-black text-4xl  my-5">
+                <Dialog.Panel className="w-full max-w-4xl transform overflow-hidden rounded-xl bg-[#1e293b] border border-gray-600 text-left align-middle shadow-2xl transition-all p-8">
+                  <Dialog.Title
+                    as="h3"
+                    className="font-extrabold text-3xl text-white mb-3"
+                  >
                     New Task
                   </Dialog.Title>
 
-                  <p className="text-xl font-bold">
-                    Fill out the form and create {""}
-                    <span className="text-fuchsia-600">a task</span>
+                  <p className="text-lg font-light text-gray-300 mb-6">
+                    Fill out the form and create{" "}
+                    <span className="text-emerald-400 font-semibold">
+                      a new task
+                    </span>
                   </p>
 
                   <form
-                    className="mt-10 space-y-3"
+                    className="space-y-6"
                     onSubmit={handleSubmit(handleCreateTask)}
                     noValidate
                   >
                     <TaskForm register={register} errors={errors} />
-                    <input
-                      type="submit"
-                      className="bg-fuchsia-600 hover:bg-fuchsia-700 w-full p-3 text-white uppercase font-bold cursor-pointer transition-colors"
-                      value="Save task"
-                    />
+
+                    <div className="pt-4">
+                      <button
+                        type="submit"
+                        className="w-full bg-emerald-500 hover:bg-emerald-600 p-3 text-white font-bold text-lg rounded-lg cursor-pointer transition-all duration-300 shadow-md hover:shadow-lg"
+                      >
+                        Save Task
+                      </button>
+                    </div>
                   </form>
                 </Dialog.Panel>
               </Transition.Child>
