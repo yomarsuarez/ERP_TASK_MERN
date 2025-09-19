@@ -31,13 +31,15 @@ export default function ConfirmAccountView() {
 
   return (
     <>
-      <h1 className="text-5xl font-black text-white">Confirm your account</h1>
-      <p className="text-2xl font-light text-white mt-5">
+      <h1 className="text-4xl md:text-5xl font-extrabold text-white">
+        Confirm your account
+      </h1>
+      <p className="text-lg md:text-xl font-light text-gray-400 mt-5">
         Enter the code you received {""}
-        <span className=" text-fuchsia-500 font-bold"> by e-mail</span>
+        <span className=" text-emerald-400 font-bold"> by e-mail</span>
       </p>
-      <form className="space-y-8 p-10 bg-white mt-10">
-        <label className="font-normal text-2xl text-center block">
+      <form className="space-y-8 p-10 bg-gray-800 mt-10 rounded-lg shadow-xl border border-gray-700">
+        <label className="font-normal text-2xl text-center block text-white">
           6-digit code
         </label>
         <div className="flex justify-center gap-5">
@@ -46,19 +48,19 @@ export default function ConfirmAccountView() {
             onChange={handleChange}
             onComplete={handleComplete}
           >
-            <PinInputField className="w-10 h-10 p-3 rounded-lg border-gray-300 border placeholder-white" />
-            <PinInputField className="w-10 h-10 p-3 rounded-lg border-gray-300 border placeholder-white" />
-            <PinInputField className="w-10 h-10 p-3 rounded-lg border-gray-300 border placeholder-white" />
-            <PinInputField className="w-10 h-10 p-3 rounded-lg border-gray-300 border placeholder-white" />
-            <PinInputField className="w-10 h-10 p-3 rounded-lg border-gray-300 border placeholder-white" />
-            <PinInputField className="w-10 h-10 p-3 rounded-lg border-gray-300 border placeholder-white" />
+            <PinInputField className="w-12 h-12 p-3 text-2xl text-center rounded-lg border-gray-600 border bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all duration-200" />
+            <PinInputField className="w-12 h-12 p-3 text-2xl text-center rounded-lg border-gray-600 border bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all duration-200" />
+            <PinInputField className="w-12 h-12 p-3 text-2xl text-center rounded-lg border-gray-600 border bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all duration-200" />
+            <PinInputField className="w-12 h-12 p-3 text-2xl text-center rounded-lg border-gray-600 border bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all duration-200" />
+            <PinInputField className="w-12 h-12 p-3 text-2xl text-center rounded-lg border-gray-600 border bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all duration-200" />
+            <PinInputField className="w-12 h-12 p-3 text-2xl text-center rounded-lg border-gray-600 border bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all duration-200" />
           </PinInput>
         </div>
       </form>
       <nav className="mt-10 flex flex-col space-y-4">
         <Link
           to="/auth/request-code"
-          className="text-center text-gray-300 font-normal"
+          className="text-center text-gray-300 font-normal hover:text-gray-100 transition-colors duration-200"
         >
           Request a new Code
         </Link>

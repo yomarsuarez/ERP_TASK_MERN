@@ -2,9 +2,9 @@ import { FingerPrintIcon, UserIcon } from "@heroicons/react/20/solid";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const tabs = [
-  { name: "Mi Cuenta", href: "/profile", icon: UserIcon },
+  { name: "My Profile", href: "/profile", icon: UserIcon },
   {
-    name: "Cambiar Password",
+    name: "Change Password",
     href: "/profile/password",
     icon: FingerPrintIcon,
   },
@@ -22,6 +22,7 @@ export default function Tabs() {
 
   return (
     <div className="mb-10">
+      {/* Mobile tabs */}
       <div className="sm:hidden">
         <label htmlFor="tabs" className="sr-only">
           Select a tab
@@ -29,24 +30,21 @@ export default function Tabs() {
         <select
           id="tabs"
           name="tabs"
-          className="block w-full rounded-md border-gray-300 focus:border-purple-800 focus:ring-purple-800"
-          onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-            navigate(e.target.value)
-          }
+          className="block w-full rounded-md border-gray-600 bg-gray-800 text-white focus:border-emerald-500 focus:ring-emerald-500"
+          onChange={(e) => navigate(e.target.value)}
           value={currentTab}
         >
-          {tabs.map((tab) => {
-            return (
-              <option value={tab.href} key={tab.name}>
-                {tab.name}
-              </option>
-            );
-          })}
+          {tabs.map((tab) => (
+            <option value={tab.href} key={tab.name}>
+              {tab.name}
+            </option>
+          ))}
         </select>
       </div>
 
+      {/* Desktop tabs */}
       <div className="hidden sm:block">
-        <div className="border-b border-gray-200">
+        <div className="border-b border-gray-700">
           <nav className="-mb-px flex space-x-8" aria-label="Tabs">
             {tabs.map((tab) => (
               <Link
@@ -54,17 +52,17 @@ export default function Tabs() {
                 to={tab.href}
                 className={classNames(
                   location.pathname === tab.href
-                    ? "border-purple-800 text-purple-800"
-                    : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
-                  "group inline-flex items-center border-b-2 py-4 px-1 text-sm font-medium"
+                    ? "border-emerald-500 text-emerald-400"
+                    : "border-transparent text-gray-500 hover:border-gray-600 hover:text-gray-300",
+                  "group inline-flex items-center border-b-2 py-4 px-1 text-sm font-medium transition-colors duration-200"
                 )}
               >
                 <tab.icon
                   className={classNames(
                     location.pathname === tab.href
-                      ? "text-purple-800"
+                      ? "text-emerald-500"
                       : "text-gray-400 group-hover:text-gray-500",
-                    "-ml-0.5 mr-2 h-5 w-5"
+                    "-ml-0.5 mr-2 h-5 w-5 transition-colors duration-200"
                   )}
                   aria-hidden="true"
                 />

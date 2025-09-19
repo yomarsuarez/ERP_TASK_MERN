@@ -9,10 +9,12 @@ export default function NewPasswordView() {
 
   return (
     <>
-      <h1 className="text-5xl font-black text-white">Reset Password</h1>
-      <p className="text-2xl font-light text-white mt-5">
+      <h1 className="font-extrabold text-center text-4xl md:text-5xl text-white">
+        Reset Password
+      </h1>
+      <p className="text-lg md:text-xl font-light text-gray-400 mt-5 text-center">
         Enter the code that you received {""}
-        <span className=" text-fuchsia-500 font-bold">by email</span>
+        <span className="text-emerald-400 font-bold">by email</span>
       </p>
       {!isValidToken ? (
         <NewPasswordToken

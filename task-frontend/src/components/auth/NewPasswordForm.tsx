@@ -16,7 +16,7 @@ export default function NewPasswordForm({ token }: NewPasswordFormProps) {
     password: "",
     password_confirmation: "",
   };
-  
+
   const {
     register,
     handleSubmit,
@@ -48,16 +48,16 @@ export default function NewPasswordForm({ token }: NewPasswordFormProps) {
     <>
       <form
         onSubmit={handleSubmit(handleNewPassword)}
-        className="space-y-8 p-10  bg-white mt-10"
+        className="space-y-8 p-10 bg-gray-800 mt-10 rounded-lg shadow-xl border border-gray-700"
         noValidate
       >
         <div className="flex flex-col gap-5">
-          <label className="font-normal text-2xl">Password</label>
+          <label className="font-normal text-2xl text-gray-400">Password</label>
 
           <input
             type="password"
             placeholder="Registration Password"
-            className="w-full p-3  border-gray-300 border"
+            className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors duration-200"
             {...register("password", {
               required: "Password is required",
               minLength: {
@@ -72,13 +72,15 @@ export default function NewPasswordForm({ token }: NewPasswordFormProps) {
         </div>
 
         <div className="flex flex-col gap-5">
-          <label className="font-normal text-2xl">Repeat Password</label>
+          <label className="font-normal text-2xl text-gray-400">
+            Repeat Password
+          </label>
 
           <input
             id="password_confirmation"
             type="password"
             placeholder="Repeat Registration Password"
-            className="w-full p-3  border-gray-300 border"
+            className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors duration-200"
             {...register("password_confirmation", {
               required: "Repeat Password is mandatory",
               validate: (value) =>
@@ -94,7 +96,7 @@ export default function NewPasswordForm({ token }: NewPasswordFormProps) {
         <input
           type="submit"
           value="Set Password"
-          className="bg-fuchsia-600 hover:bg-fuchsia-700 w-full p-3  text-white font-black  text-xl cursor-pointer"
+          className="bg-emerald-500 hover:bg-emerald-600 w-full p-3 text-white font-black text-xl cursor-pointer rounded-lg transition-colors duration-200 shadow-md"
         />
       </form>
     </>

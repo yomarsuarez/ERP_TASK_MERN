@@ -35,84 +35,228 @@ export default function ProjectTeamView() {
   if (data)
     return (
       <>
-        <h1 className="text-5xl font-black">Manage work team</h1>
-        <p className="text-2xl font-light text-gray-500 mt-5">
-          manage the work team for this project
-        </p>
-        <nav className="my-5 flex gap-3">
+        {/* Header */}
+        <div className="mb-10">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-600 mb-3">
+            Manage Work Team
+          </h1>
+          <p className="text-lg md:text-xl font-light text-gray-600">
+            Manage the work team for{" "}
+            <span className="text-emerald-400 font-semibold">this project</span>
+          </p>
+        </div>
+
+        {/* Navigation */}
+        <nav className="mb-10 flex flex-wrap gap-4">
           <button
             type="button"
-            className="bg-purple-400 hover:bg-purple-500 px-10 py-3 text-white text-xl font-bold cursor-pointer transition-colors"
+            className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 px-6 py-3 text-white font-bold rounded-lg cursor-pointer transition-all duration-300 shadow-md hover:shadow-lg"
             onClick={() => navigate(location.pathname + "?addMember=true")}
           >
-            Add worker
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+              />
+            </svg>
+            Add Team Member
           </button>
           <Link
-            className="bg-fuchsia-400 hover:bg-fuchsia-500 px-10 py-3 text-white text-xl font-bold cursor-pointer transition-colors"
+            className="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-600 px-6 py-3 text-gray-200 hover:text-white font-semibold rounded-lg cursor-pointer transition-all duration-300 border border-gray-600"
             to={`/projects/${projectId}`}
           >
-            Come back project
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+              />
+            </svg>
+            Back to Project
           </Link>
         </nav>
-        <h2 className="text-5xl font-black my-10">Current members</h2>
-        {data.length ? (
-          <ul
-            role="list"
-            className="divide-y divide-gray-100 border border-gray-100 mt-10 bg-white shadow-lg"
-          >
-            {data?.map((member) => (
-              <li
-                key={member._id}
-                className="flex justify-between gap-x-6 px-5 py-10"
-              >
-                <div className="flex min-w-0 gap-x-4">
-                  <div className="min-w-0 flex-auto space-y-2">
-                    <p className="text-2xl font-black text-gray-600">
-                      {member.name}
-                    </p>
-                    <p className="text-sm text-gray-400">{member.email}</p>
+
+        {/* Current Members Section */}
+        <div className="mb-8">
+          <div className="flex items-center gap-3 mb-6">
+            <svg
+              className="w-6 h-6 text-emerald-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M17 20h5v-2a3 3 0 00-5.196-2.196m0 0L16 17m-2-3a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+              />
+            </svg>
+            <h2 className="text-3xl font-bold text-white">Current Members</h2>
+            {data.length > 0 && (
+              <span className="bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full text-sm font-medium">
+                {data.length}
+              </span>
+            )}
+          </div>
+
+          {data.length ? (
+            <div className="space-y-4">
+              {data?.map((member) => (
+                <div
+                  key={member._id}
+                  className="bg-[#1e293b] border border-gray-600 rounded-lg p-6 flex justify-between items-center shadow-sm hover:shadow-md transition-shadow duration-200"
+                >
+                  <div className="flex items-center gap-4">
+                    {/* Avatar placeholder */}
+                    <div className="w-12 h-12 bg-emerald-500/20 rounded-full flex items-center justify-center">
+                      <svg
+                        className="w-6 h-6 text-emerald-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                        />
+                      </svg>
+                    </div>
+
+                    <div className="min-w-0 flex-auto">
+                      <p className="text-xl font-bold text-white mb-1">
+                        {member.name}
+                      </p>
+                      <p className="text-sm text-gray-400">{member.email}</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center">
+                    <Menu as="div" className="relative">
+                      <Menu.Button className="flex items-center justify-center w-10 h-10 text-gray-400 hover:text-gray-200 hover:bg-gray-700 rounded-lg transition-colors duration-150">
+                        <span className="sr-only">Member options</span>
+                        <EllipsisVerticalIcon
+                          className="h-5 w-5"
+                          aria-hidden="true"
+                        />
+                      </Menu.Button>
+                      <Transition
+                        as={Fragment}
+                        enter="transition ease-out duration-100"
+                        enterFrom="transform opacity-0 scale-95"
+                        enterTo="transform opacity-100 scale-100"
+                        leave="transition ease-in duration-75"
+                        leaveFrom="transform opacity-100 scale-100"
+                        leaveTo="transform opacity-0 scale-95"
+                      >
+                        <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-lg bg-gray-800 py-2 shadow-xl ring-1 ring-gray-600 focus:outline-none">
+                          <Menu.Item>
+                            <button
+                              type="button"
+                              className="flex items-center gap-2 w-full px-4 py-2 text-sm text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-colors"
+                              onClick={() =>
+                                mutate({ projectId, userId: member._id })
+                              }
+                            >
+                              <svg
+                                className="w-4 h-4"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth="2"
+                                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                />
+                              </svg>
+                              Remove from team
+                            </button>
+                          </Menu.Item>
+                        </Menu.Items>
+                      </Transition>
+                    </Menu>
                   </div>
                 </div>
-                <div className="flex shrink-0 items-center gap-x-6">
-                  <Menu as="div" className="relative flex-none">
-                    <Menu.Button className="-m-2.5 block p-2.5 text-gray-500 hover:text-gray-900">
-                      <span className="sr-only">Options</span>
-                      <EllipsisVerticalIcon
-                        className="h-9 w-9"
-                        aria-hidden="true"
-                      />
-                    </Menu.Button>
-                    <Transition
-                      as={Fragment}
-                      enter="transition ease-out duration-100"
-                      enterFrom="transform opacity-0 scale-95"
-                      enterTo="transform opacity-100 scale-100"
-                      leave="transition ease-in duration-75"
-                      leaveFrom="transform opacity-100 scale-100"
-                      leaveTo="transform opacity-0 scale-95"
-                    >
-                      <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none">
-                        <Menu.Item>
-                          <button
-                            type="button"
-                            className="block px-3 py-1 text-sm leading-6 text-red-500"
-                            onClick={() =>
-                              mutate({ projectId, userId: member._id })
-                            }
-                          >
-                            Delete project
-                          </button>
-                        </Menu.Item>
-                      </Menu.Items>
-                    </Transition>
-                  </Menu>
-                </div>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="text-center py-20">There are no members in this team</p>
-        )}
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-16 bg-[#1e293b] rounded-xl border-2 border-dashed border-gray-600">
+              <div className="mx-auto max-w-md">
+                <svg
+                  className="mx-auto h-16 w-16 text-gray-500 mb-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="1"
+                    d="M17 20h5v-2a3 3 0 00-5.196-2.196m0 0L16 17m-2-3a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="1"
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                  />
+                </svg>
+                <h3 className="text-lg font-bold text-white mb-2">
+                  No team members yet
+                </h3>
+                <p className="text-gray-300 mb-6">
+                  Add your first team member to start collaborating
+                </p>
+                <button
+                  type="button"
+                  className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 px-6 py-3 text-white font-bold rounded-lg transition-all duration-300 shadow-md hover:shadow-lg"
+                  onClick={() =>
+                    navigate(location.pathname + "?addMember=true")
+                  }
+                >
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                    />
+                  </svg>
+                  Add First Member
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+
         <AddMemberModal />
       </>
     );

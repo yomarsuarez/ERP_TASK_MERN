@@ -50,20 +50,22 @@ export default function EditProjectForm({
   return (
     <>
       <div className="max-w-3xl mx-auto">
-        <h1 className="text-5xl font-black">Edit project</h1>
-        <p className="text-2xl font-light text-gray-500 mt-5">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-600">
+          Edit project
+        </h1>
+        <p className="text-lg md:text-xl font-light text-gray-600 mt-5">
           Fill out the form to Edit a project
         </p>
         <nav className="my-5">
           <Link
-            className="bg-purple-400 hover:bg-purple-500 px-10 py-3 text-white text-xl font-bold cursor-pointer transition-colors"
+            className="bg-gray-700 hover:bg-gray-600 px-10 py-3 text-gray-200 text-lg font-bold rounded-lg cursor-pointer transition-colors duration-200"
             to="/"
           >
             Come back to projects
           </Link>
         </nav>
         <form
-          className="mt-10 bg-white shadow-lg p-10 rounded-lg"
+          className="mt-10 bg-gray-800 shadow-xl p-10 rounded-lg border border-gray-700"
           onSubmit={handleSubmit(handleForm)}
           noValidate
         >
@@ -71,7 +73,7 @@ export default function EditProjectForm({
           <input
             type="submit"
             value="Save changes"
-            className="bg-fuchsia-600 hover:bg-fuchsia-700 w-full p-3 text-white uppercase font-bold cursor-pointer transition-colors"
+            className="bg-emerald-500 hover:bg-emerald-600 w-full p-3 text-white uppercase font-bold cursor-pointer rounded-lg transition-colors duration-200 shadow-md"
           />
         </form>
       </div>

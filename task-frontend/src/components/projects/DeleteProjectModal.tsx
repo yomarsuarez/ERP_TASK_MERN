@@ -81,14 +81,17 @@ export default function DeleteProjectModal() {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-4xl transform overflow-hidden rounded-2xl bg-white text-left align-middle shadow-xl transition-all p-16">
-                <Dialog.Title as="h3" className="font-black text-4xl  my-5">
+              <Dialog.Panel className="w-full max-w-4xl transform overflow-hidden rounded-2xl bg-gray-800 text-left align-middle shadow-xl transition-all p-16 border border-gray-700">
+                <Dialog.Title
+                  as="h3"
+                  className="font-extrabold text-4xl text-white my-5"
+                >
                   Delete Project{" "}
                 </Dialog.Title>
 
-                <p className="text-xl font-bold">
+                <p className="text-xl font-bold text-white">
                   Confirm the deletion of the project {""}
-                  <span className="text-fuchsia-600">
+                  <span className="text-emerald-400">
                     by entering your password
                   </span>
                 </p>
@@ -99,14 +102,17 @@ export default function DeleteProjectModal() {
                   noValidate
                 >
                   <div className="flex flex-col gap-3">
-                    <label className="font-normal text-2xl" htmlFor="password">
+                    <label
+                      className="font-normal text-2xl text-gray-400"
+                      htmlFor="password"
+                    >
                       Password
                     </label>
                     <input
                       id="password"
                       type="password"
                       placeholder="Password Login"
-                      className="w-full p-3  border-gray-300 border"
+                      className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors duration-200"
                       {...register("password", {
                         required: "Password is required",
                       })}
@@ -118,7 +124,7 @@ export default function DeleteProjectModal() {
 
                   <input
                     type="submit"
-                    className=" bg-fuchsia-600 hover:bg-fuchsia-700 w-full p-3  text-white font-black  text-xl cursor-pointer"
+                    className="bg-emerald-500 hover:bg-emerald-600 w-full p-3 text-white font-black text-xl cursor-pointer rounded-lg transition-colors duration-200 shadow-md"
                     value="Delete Project"
                   />
                 </form>

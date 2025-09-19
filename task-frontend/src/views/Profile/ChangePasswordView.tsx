@@ -38,19 +38,21 @@ export default function ChangePasswordView() {
   return (
     <>
       <div className="mx-auto max-w-3xl">
-        <h1 className="text-5xl font-black ">Change Password</h1>
-        <p className="text-2xl font-light text-gray-500 mt-5">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-600">
+          Change Password
+        </h1>
+        <p className="text-lg md:text-xl font-light text-gray-600 mt-5">
           Use this form to change your password.
         </p>
 
         <form
           onSubmit={handleSubmit(handleChangePassword)}
-          className=" mt-14 space-y-5 bg-white shadow-lg p-10 rounded-lg"
+          className="mt-14 space-y-5 bg-gray-800 shadow-xl p-10 rounded-lg border border-gray-700"
           noValidate
         >
           <div className="mb-5 space-y-3">
             <label
-              className="text-sm uppercase font-bold"
+              className="text-sm uppercase font-bold text-gray-400"
               htmlFor="current_password"
             >
               Current Password
@@ -59,7 +61,7 @@ export default function ChangePasswordView() {
               id="current_password"
               type="password"
               placeholder="Current Password"
-              className="w-full p-3  border border-gray-200"
+              className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors duration-200"
               {...register("current_password", {
                 required: "Current password is required",
               })}
@@ -70,19 +72,22 @@ export default function ChangePasswordView() {
           </div>
 
           <div className="mb-5 space-y-3">
-            <label className="text-sm uppercase font-bold" htmlFor="password">
+            <label
+              className="text-sm uppercase font-bold text-gray-400"
+              htmlFor="password"
+            >
               New Password
             </label>
             <input
               id="password"
               type="password"
               placeholder="New Password"
-              className="w-full p-3  border border-gray-200"
+              className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors duration-200"
               {...register("password", {
                 required: "New Password is required",
                 minLength: {
                   value: 8,
-                  message: "New Password must be at least 8 chaeacters",
+                  message: "New Password must be at least 8 characters",
                 },
               })}
             />
@@ -90,10 +95,11 @@ export default function ChangePasswordView() {
               <ErrorMessage>{errors.password.message}</ErrorMessage>
             )}
           </div>
+
           <div className="mb-5 space-y-3">
             <label
               htmlFor="password_confirmation"
-              className="text-sm uppercase font-bold"
+              className="text-sm uppercase font-bold text-gray-400"
             >
               Repeat New Password
             </label>
@@ -102,7 +108,7 @@ export default function ChangePasswordView() {
               id="password_confirmation"
               type="password"
               placeholder="Repeat New Password"
-              className="w-full p-3  border border-gray-200"
+              className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors duration-200"
               {...register("password_confirmation", {
                 required: "Repeat New Password is required",
                 validate: (value) =>
@@ -119,7 +125,7 @@ export default function ChangePasswordView() {
           <input
             type="submit"
             value="Change password"
-            className="bg-fuchsia-600 w-full p-3 text-white uppercase font-bold hover:bg-fuchsia-700 cursor-pointer transition-colors"
+            className="bg-emerald-500 w-full p-3 text-white uppercase font-bold hover:bg-emerald-600 cursor-pointer rounded-lg transition-colors duration-200 shadow-md"
           />
         </form>
       </div>
