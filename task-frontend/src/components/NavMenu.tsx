@@ -3,17 +3,17 @@ import { Popover, Transition } from "@headlessui/react";
 import { Bars3Icon } from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
 import type { User } from "../types";
-import { useQueryClient } from "@tanstack/react-query";
+import { useLogout } from "../hooks/useAuth";
 
 type NameMenuProps = {
   name: User["name"];
 };
 
 export default function NavMenu({ name }: NameMenuProps) {
-  const queryClient = useQueryClient();
-  const logout = () => {
-    localStorage.removeItem("AUTH_TOKEN");
-    queryClient.invalidateQueries({ queryKey: ["user"] });
+  const { mutate: logout } = useLogout();
+
+  const handleLogout = () => {
+    logout();
   };
 
   return (
@@ -88,7 +88,7 @@ export default function NavMenu({ name }: NameMenuProps) {
               <button
                 className="flex items-center gap-3 w-full px-4 py-3 text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-all duration-200 rounded-lg mx-1"
                 type="button"
-                onClick={logout}
+                onClick={handleLogout}
               >
                 <svg
                   className="w-5 h-5"

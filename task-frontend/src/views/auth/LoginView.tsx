@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import type { UserLoginForm } from "@/types/index";
 import ErrorMessage from "@/components/ErrorMessage";
 import { authenticateUser } from "@/api/AuthAPI";
@@ -17,13 +17,14 @@ export default function LoginView() {
     formState: { errors },
   } = useForm({ defaultValues: initialValues });
   const navigate = useNavigate();
-
+  const queryClient = useQueryClient();
   const { mutate } = useMutation({
     mutationFn: authenticateUser,
     onError: (error) => {
       toast.error(error.message);
     },
     onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["user"] });
       navigate("/");
     },
   });

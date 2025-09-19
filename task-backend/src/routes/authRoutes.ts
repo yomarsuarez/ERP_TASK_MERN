@@ -40,6 +40,8 @@ router.post(
   AuthController.login
 );
 
+router.post("/logout", authenticate, AuthController.logout);
+
 router.post(
   "/request-code",
   body("email").isEmail().withMessage("Invalid Email"),
@@ -116,7 +118,7 @@ router.post(
   authenticate,
 
   body("password").notEmpty().withMessage("Password is required"),
- 
+
   handleInputErrors,
   AuthController.checkPassword
 );

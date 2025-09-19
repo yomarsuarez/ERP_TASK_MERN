@@ -88,12 +88,28 @@ export class AuthController {
         const error = new Error("Incorrect password");
         return res.status(404).json({ error: error.message });
       }
-
       const token = generateJWT({ id: user.id });
-      res.send(token);
+      res
+        .cookie("token", token, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === "production",
+          sameSite: "lax", // o "strict"
+          maxAge: 1000 * 60 * 60 * 24 * 7,
+        })
+        .send("Login successful");
     } catch (error) {
-      res.status(500).json({ error: "Made an error" });
+      res.status(500).json({ error: "It was an error" });
     }
+  };
+
+  static logout = async (req: Request, res: Response) => {
+    res
+      .clearCookie("token", {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "lax",
+      })
+      .send("Logged out successfully");
   };
 
   static requestConfirmationCode = async (req: Request, res: Response) => {

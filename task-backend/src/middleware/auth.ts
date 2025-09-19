@@ -15,27 +15,33 @@ export const authenticate = async (
   res: Response,
   next: NextFunction
 ) => {
+  let token: string | undefined;
   const bearer = req.headers.authorization;
-  if (!bearer) {
-    const error = new Error("Unauthorized");
-    return res.status(401).json({ error: error.message });
+  if (bearer && bearer.startsWith("Bearer ")) {
+    [, token] = bearer.split(" ");
   }
 
-  const [, token] = bearer.split(" ");
+  if (!token && req.cookies && req.cookies.token) {
+    token = req.cookies.token;
+  }
 
+  if (!token) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    // 4. Verifica el token
+    const decoded = jwt.verify(token, process.env.JWT_SECRET!);
 
-    if (typeof decoded === "object" && decoded.id) {
-      const user = await User.findById(decoded.id).select("_id name email");
-      if (user) {
-        req.user = user;
-        next();
-      } else {
-        res.status(500).json({ error: "Invalid token" });
-      }
+    // 5. Busca el usuario en la base de datos
+    const user = await User.findById((decoded as any).id).select("-password");
+    if (!user) {
+      return res.status(401).json({ error: "Unauthorized" });
     }
+
+    // 6. Adjunta el usuario a la request y continúa
+    req.user = user;
+    next();
   } catch (error) {
-    res.status(500).json({ error: "Invalid token" });
+    return res.status(401).json({ error: "Invalid token" });
   }
 };
