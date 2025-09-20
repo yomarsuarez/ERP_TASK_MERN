@@ -25,8 +25,7 @@ https://app-task-mern-frontend.vercel.app/
 🛠️ Tecnologías utilizadas
 Frontend
 
-⚛️ React
- con Vite
+⚛️ React con Vite
 
 🎨 TailwindCSS
 
@@ -36,11 +35,9 @@ Frontend
 
 Backend
 
-🟢 Node.js
- + Express
+🟢 Node.js + Express
 
-🍃 MongoDB
- con Mongoose
+🍃 MongoDB con Mongoose
 
 🔐 JWT (JSON Web Tokens) para autenticación
 
@@ -54,20 +51,12 @@ Infraestructura
 
 ☁️ Base de Datos → MongoDB Atlas
 
-📸 Capturas de Pantalla
-Dashboard de proyectos
-
-Detalle de tareas
-
-(puedes poner otra captura de tu app aquí)
-
 ⚙️ Instalación y Ejecución en Local
 
 Clonar el repositorio:
 
 git clone https://github.com/tu-usuario/task-manager-mern.git
 cd task-manager-mern
-
 
 Instalar dependencias en frontend y backend:
 
@@ -76,24 +65,20 @@ npm install
 cd ../backend
 npm install
 
-
 Crear archivo .env en el backend con:
 
 MONGO_URI=tu_conexion_mongo
 JWT_SECRET=tu_secreto_jwt
-
 
 Iniciar el backend:
 
 cd backend
 npm run dev
 
-
 Iniciar el frontend:
 
 cd frontend
 npm run dev
-
 
 Abrir en el navegador:
 
