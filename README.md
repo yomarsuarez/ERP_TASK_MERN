@@ -100,6 +100,3 @@ http://localhost:5173
 
  Modo oscuro 🌙.
 
-📄 Licencia
-
-Este proyecto se distribuye bajo licencia MIT.
