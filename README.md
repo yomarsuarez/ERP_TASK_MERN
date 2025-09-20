@@ -4,6 +4,8 @@ Aplicación web para la gestión de proyectos y tareas, desarrollada con el stac
 Permite registrar usuarios, iniciar sesión, crear proyectos y administrar las tareas de forma sencilla e intuitiva.
 
 🔗 Demo en Producción: Task Manager MERN
+https://app-task-mern-frontend.vercel.app/
+
 🚀 Características
 
 🔑 Autenticación de usuarios con JWT.
