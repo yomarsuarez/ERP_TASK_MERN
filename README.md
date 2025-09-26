@@ -3,6 +3,12 @@
 Aplicación web para la gestión de proyectos y tareas, desarrollada con el stack MERN (MongoDB, Express, React, Node.js).
 Permite registrar usuarios, iniciar sesión, crear proyectos y administrar las tareas de forma sencilla e intuitiva.
 
+👤 Usuario de prueba
+
+📧 Email: yomaralveiro.suarez@gmail.com
+
+🔑 Password: 12345678
+
 🔗 Demo en Producción: Task Manager MERN
 https://app-task-mern-frontend.vercel.app/
 
@@ -84,11 +90,6 @@ Abrir en el navegador:
 
 http://localhost:5173
 
-👤 Usuario de prueba
-
-📧 Email: yomaralveiro.suarez@gmail.com
-
-🔑 Password: 12345678
 
 📌 Próximas mejoras
 
