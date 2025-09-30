@@ -1,103 +1,86 @@
-📋 Task Manager MERN
+# 📋 Task Manager MERN
 
-Aplicación web para la gestión de proyectos y tareas, desarrollada con el stack MERN (MongoDB, Express, React, Node.js).
-Permite registrar usuarios, iniciar sesión, crear proyectos y administrar las tareas de forma sencilla e intuitiva.
+Aplicación web para la **gestión de proyectos y tareas**, desarrollada con el stack **MERN** (MongoDB, Express, React, Node.js).  
+Permite **registrar usuarios, iniciar sesión, crear proyectos y administrar tareas** de forma sencilla e intuitiva.  
 
-👤 Usuario de prueba
+---
 
-📧 Email: yomaralveiro.suarez@gmail.com
+## 👤 Usuario de prueba
 
-🔑 Password: 12345678
+Puedes usar tu propio registro o iniciar sesión con este usuario de prueba:
 
-🔗 Demo en Producción: Task Manager MERN
-https://app-task-mern-frontend.vercel.app/
+- 📧 **Email:** yomaralveiro.suarez@gmail.com  
+- 🔑 **Password:** 12345678  
 
-🚀 Características
+🔗 **Demo en Producción:** [Task Manager MERN](https://app-task-mern-frontend.vercel.app/)
 
-🔑 Autenticación de usuarios con JWT.
+---
 
-👤 Registro e inicio de sesión.
+## 🚀 Características
 
-📂 Creación y administración de proyectos.
+- 🔑 Autenticación de usuarios con **JWT**.  
+- 👤 Registro e inicio de sesión.  
+- 📂 Creación y administración de proyectos.  
+- ✅ Gestión de tareas por proyecto.  
+- 👥 Asignación de roles (ej. Manager).  
+- 📧 **Notificaciones por correo electrónico con Brevo (antes Sendinblue)**.  
+- 🎨 Interfaz moderna con **TailwindCSS** y **Shadcn UI**.  
+- 🌐 Despliegue en **Vercel (Frontend)** y **Railway (Backend)**.  
 
-✅ Gestión de tareas por proyecto.
+---
 
-👥 Asignación de roles (ej. Manager).
+## 🛠️ Tecnologías utilizadas
 
-🌐 Despliegue en Vercel (Frontend) y Railway (Backend).
+### 🔹 Frontend
+- ⚛️ React con Vite  
+- 🎨 TailwindCSS  
+- 🧩 Shadcn UI  
+- 🔄 Axios para consumo de API  
 
-🎨 UI moderna con TailwindCSS y Shadcn UI.
+### 🔹 Backend
+- 🟢 Node.js + Express  
+- 🍃 MongoDB con Mongoose  
+- 🔐 JWT (JSON Web Tokens) para autenticación  
+- 🌐 CORS configurado para producción  
 
-🛠️ Tecnologías utilizadas
-Frontend
+### 🔹 Infraestructura
+- ☁️ **Frontend** → Vercel  
+- ☁️ **Backend** → Railway  
+- ☁️ **Base de Datos** → MongoDB Atlas  
 
-⚛️ React con Vite
+---
 
-🎨 TailwindCSS
+## ⚙️ Instalación y Ejecución en Local
 
-🧩 Shadcn UI
+1. Clonar el repositorio:
 
-🔄 Axios para consumo de API
+   ```bash
+   git clone https://github.com/tu-usuario/task-manager-mern.git
+   cd task-manager-mern
 
-Backend
-
-🟢 Node.js + Express
-
-🍃 MongoDB con Mongoose
-
-🔐 JWT (JSON Web Tokens) para autenticación
-
-🌐 CORS configurado para producción
-
-Infraestructura
-
-☁️ Frontend → Vercel
-
-☁️ Backend → Railway
-
-☁️ Base de Datos → MongoDB Atlas
-
-⚙️ Instalación y Ejecución en Local
-
-Clonar el repositorio:
-
-git clone https://github.com/tu-usuario/task-manager-mern.git
-cd task-manager-mern
-
-Instalar dependencias en frontend y backend:
-
+2. Instalar dependencias en frontend y backend:
 cd frontend
 npm install
 cd ../backend
 npm install
 
-Crear archivo .env en el backend con:
-
+3. Crear archivo .env en el backend con: 
 MONGO_URI=tu_conexion_mongo
 JWT_SECRET=tu_secreto_jwt
+BREVO_API_KEY=tu_api_key_brevo
 
-Iniciar el backend:
-
+4. Iniciar el backend:
 cd backend
 npm run dev
 
-Iniciar el frontend:
-
+5. Iniciar el frontend:
 cd frontend
 npm run dev
 
-Abrir en el navegador:
+6. Abrir en el navegador:
+👉 http://localhost:5173
 
-http://localhost:5173
 
 
-📌 Próximas mejoras
 
- Notificaciones en tiempo real (Socket.io).
-
- Permitir asignar tareas a usuarios específicos.
-
- Dashboard con estadísticas de proyectos.
-
- Modo oscuro 🌙.
 
